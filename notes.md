@@ -1,3 +1,21 @@
+GET /person/{id}
+DELETE /person/{id}
+POST /person/{name}/{age}
+PUT /person/{id}/{age}
+
+GET /person/id/{id}
+GET /person/age/{age}
+
+
+/getPerson/{id}
+/deletePeron/{id}
+/savePerson/{name}/{age}
+/updateAgeOfPerson/{id}/{age}
+
+
+
+
+
 * training
 * persons (id primary key auto_increment, name, age)
 
