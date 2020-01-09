@@ -1,5 +1,7 @@
 package com.synechron;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +18,19 @@ public class PeopleController {
 	@Autowired
 	private PersonDao personDao;
 
+	
+	@GetMapping("/agegt/{age}")
+	public List<Person> getPersonsWithAgeGt(@PathVariable int age) {
+		return personDao.findPersonsWithAgeGreaterThan(age);
+	}
+	
+	@GetMapping("/all")
+	public List<Person> getAll() {
+		return personDao.findAll();
+	}
+	
 	@DeleteMapping("/{id}")
-	public String deletePerson(int id) {
+	public String deletePerson(@PathVariable int id) {
 		Person person = personDao
 				.findById(id)
 				.orElseThrow(() -> new RuntimeException("Person record not found"));
@@ -26,7 +39,7 @@ public class PeopleController {
 	}
 
 	@PutMapping("/{id}/{age}")
-	public Person updateAge(int id, int age) {
+	public Person updateAge(@PathVariable int id, @PathVariable int age) {
 		Person person = personDao
 				.findById(id)
 				.orElseThrow(() -> new RuntimeException("Person record not found"));
@@ -37,7 +50,7 @@ public class PeopleController {
 
 
 	@GetMapping("/{id}")
-	public Person load(int id) {
+	public Person load(@PathVariable int id) {
 		Person person = personDao
 				.findById(id)
 				.orElseThrow(() -> new RuntimeException("Person record not found"));
