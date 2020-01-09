@@ -2,6 +2,9 @@ package com.synechron;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +21,8 @@ public class PeopleController {
 	@Autowired
 	private PersonDao personDao;
 
+	@PersistenceContext
+	private EntityManager entityManager;
 	
 	@GetMapping("/agegt/{age}")
 	public List<Person> getPersonsWithAgeGt(@PathVariable int age) {
