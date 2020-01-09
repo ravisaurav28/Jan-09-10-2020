@@ -1,3 +1,28 @@
+* training
+* persons (id primary key auto_increment, name, age)
+
+```sql
+
+create database training;
+
+create table persons( id int(4) not null primary key auto_increment, name varchar(40), age int(4));
+
+```
+
+
+```
+[src]
+	[main]
+		[java]
+		[resources]
+		[webapp]
+			*.jsp
+```
+
+
+
+
+
 * curl -method POST
 
 ``` java
