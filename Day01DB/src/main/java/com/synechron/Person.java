@@ -6,6 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name = "persons")
@@ -16,9 +22,13 @@ public class Person {
 	private int id;
 	
 	@Column(name = "name")
+	@NotNull
+	@Length(min = 1, max = 40)
 	private String name;
 	
 	@Column(name = "age")
+	@Min(1)
+	@Max(120)
 	private int age;
 	
 	public int getId() {
